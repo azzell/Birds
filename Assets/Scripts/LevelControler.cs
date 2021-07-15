@@ -1,0 +1,104 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class LevelControler : MonoBehaviour
+{
+    private Monster[] _monsters;
+    public int _shotsLeft;
+    private bool _notReseted = true;
+    [SerializeField] private string _nextLevelName;
+    [SerializeField] public int _shotsToUse;
+    [SerializeField] public string _thisLevelName;
+
+
+    public static LevelControler Instance;
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        if(Instance != null)
+        {
+            GameObject.Destroy(this.gameObject);
+            return;
+        }
+
+        Instance = this;
+        _shotsLeft = _shotsToUse;
+    }
+    private void OnEnable()
+    {
+
+        _monsters = FindObjectsOfType<Monster>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(MonstersAreAllDead())
+        {
+            GoToNextLevel();
+        }      
+
+    }
+    private void LateUpdate()
+    {
+        if(ShotsLeft())
+        {
+            Bird.Instance.gameObject.SetActive(false);
+            ResetLevel();
+
+        }
+        
+        
+    }
+
+    private void ResetLevel()
+    {
+        _notReseted = false;
+        Action act1 = () =>
+        {
+            SceneManager.LoadScene(_thisLevelName);
+
+        };
+        Action act2 = () => 
+        {
+            SceneManager.LoadScene(_nextLevelName);
+        };
+        PopUp popUp = UIController.Instance.CreatePopUp();
+        popUp.Init(UIController.Instance.MainCanvas,
+            "Niestety przegra³eœ.\nCzy chcesz powtórzyæ?",
+            "Tak!",
+            "nie :(",
+            act1,
+            act2
+            );
+    }
+
+    private bool ShotsLeft()
+    {
+        if (_shotsLeft <= 0 && _notReseted)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void GoToNextLevel()
+    {
+        Debug.Log("Go to next level" + _nextLevelName);
+        SceneManager.LoadScene(_nextLevelName);
+    }
+
+    private bool MonstersAreAllDead()
+    {
+        foreach (var monster in _monsters)
+        {
+            if (monster.gameObject.activeSelf)
+                return false;
+        }
+        return true;
+    }
+}
