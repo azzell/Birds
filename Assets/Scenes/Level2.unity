@@ -2538,6 +2538,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 96392141675137851, guid: c0fbf8012adfef6429b9929d7de652be, type: 3}
+      propertyPath: _levelId
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0fbf8012adfef6429b9929d7de652be, type: 3}
 --- !u!1001 &1534636260
@@ -2559,6 +2563,34 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 962873396}
+    - target: {fileID: 722517914560850510, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 722517914560850609, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.125803
+      objectReference: {fileID: 0}
+    - target: {fileID: 722517914560850609, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.7086556
+      objectReference: {fileID: 0}
+    - target: {fileID: 722517914560850609, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.762272
+      objectReference: {fileID: 0}
+    - target: {fileID: 722517914770520364, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.125803
+      objectReference: {fileID: 0}
+    - target: {fileID: 722517914770520364, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.7086556
+      objectReference: {fileID: 0}
+    - target: {fileID: 722517914770520364, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.762272
+      objectReference: {fileID: 0}
     - target: {fileID: 722517914770520365, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: m_LookAt
       value: 

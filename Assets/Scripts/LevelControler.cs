@@ -12,7 +12,7 @@ public class LevelControler : MonoBehaviour
     [SerializeField] private string _nextLevelName;
     [SerializeField] public int _shotsToUse;
     [SerializeField] public string _thisLevelName;
-
+    [SerializeField] public string _levelId;
 
     public static LevelControler Instance;
 
@@ -40,8 +40,12 @@ public class LevelControler : MonoBehaviour
         if(MonstersAreAllDead())
         {
             GoToNextLevel();
+            PlayerPrefs.SetInt("GameSaved", 1);
+            PlayerPrefs.SetInt("LevelId", Int32.Parse(_levelId));
+            PlayerPrefs.SetString("LevelSaved", _nextLevelName);
+            PlayerPrefs.Save();
         }      
-
+        
     }
     private void LateUpdate()
     {
