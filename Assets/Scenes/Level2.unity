@@ -2041,7 +2041,6 @@ GameObject:
   m_Component:
   - component: {fileID: 962873395}
   - component: {fileID: 962873394}
-  - component: {fileID: 962873396}
   m_Layer: 6
   m_Name: Summer Background
   m_TagString: Untagged
@@ -2114,35 +2113,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &962873396
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962873393}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 25.64, y: 14.4225}
-    newSize: {x: 106.65588, y: 14.4225}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -46.03011, y: 7.0538554}
-      - {x: -46.1875, y: -8.785189}
-      - {x: 51.127777, y: -8.625787}
-      - {x: 50.43714, y: 7.0538554}
 --- !u!1 &966925821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,6 +2512,10 @@ PrefabInstance:
       propertyPath: _levelId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 96392141675137851, guid: c0fbf8012adfef6429b9929d7de652be, type: 3}
+      propertyPath: _nextLevelName
+      value: Level3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0fbf8012adfef6429b9929d7de652be, type: 3}
 --- !u!1001 &1534636260
@@ -2554,42 +2528,38 @@ PrefabInstance:
     - target: {fileID: 1315198314, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
-      objectReference: {fileID: 962873396}
+      objectReference: {fileID: 0}
     - target: {fileID: 1315198315, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1355054542}
-    - target: {fileID: 1387341770, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
-      propertyPath: m_BoundingShape2D
-      value: 
-      objectReference: {fileID: 962873396}
     - target: {fileID: 722517914560850510, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 4.907523
       objectReference: {fileID: 0}
     - target: {fileID: 722517914560850609, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.125803
+      value: -5.798682
       objectReference: {fileID: 0}
     - target: {fileID: 722517914560850609, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7086556
+      value: -2.5435102
       objectReference: {fileID: 0}
     - target: {fileID: 722517914560850609, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.762272
+      value: 10.462273
       objectReference: {fileID: 0}
     - target: {fileID: 722517914770520364, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.125803
+      value: -5.798682
       objectReference: {fileID: 0}
     - target: {fileID: 722517914770520364, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7086556
+      value: -2.5435102
       objectReference: {fileID: 0}
     - target: {fileID: 722517914770520364, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.762272
+      value: 10.462273
       objectReference: {fileID: 0}
     - target: {fileID: 722517914770520365, guid: 844804c9866b3b54d8b5386ef18f3da9, type: 3}
       propertyPath: m_LookAt
