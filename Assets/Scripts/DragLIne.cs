@@ -13,7 +13,15 @@ public class DragLIne : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
         //_bird = FindObjectOfType<Bird>();
         //_bird = Bird.Instance;
-        _lineRenderer.SetPosition(0, new Vector3(Bird.Instance.transform.position.x, Bird.Instance.transform.position.y, -0.1f));
+        if (Bird.Instance.IsActive)
+        {
+            _lineRenderer.SetPosition(0, new Vector3(Bird.Instance.transform.position.x, Bird.Instance.transform.position.y, -0.1f));
+        }
+        if (BirdGreen.Instance.IsActive)
+        {
+            _lineRenderer.SetPosition(0, new Vector3(BirdGreen.Instance.transform.position.x, BirdGreen.Instance.transform.position.y, -0.1f));
+
+        }
     }
 
     // Update is called once per frame
@@ -22,6 +30,11 @@ public class DragLIne : MonoBehaviour
         if(Bird.Instance.IsDragging)//_bird.IsDragging
         { 
             _lineRenderer.SetPosition(1, Bird.Instance.transform.position);
+            _lineRenderer.enabled = true;
+        }
+        else if (BirdGreen.Instance.IsDragging)
+        {
+            _lineRenderer.SetPosition(1, BirdGreen.Instance.transform.position);
             _lineRenderer.enabled = true;
         }
         else

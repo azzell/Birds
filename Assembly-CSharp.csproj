@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\DragLIne.cs" />
     <Compile Include="Assets\Scripts\Bird.cs" />
     <Compile Include="Assets\Scripts\LevelControler.cs" />
+    <Compile Include="Assets\Scripts\BIrdGreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

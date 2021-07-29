@@ -8,8 +8,9 @@ public class Bird : MonoBehaviour
 {
     [SerializeField] float _lunchForce = 800;
     [SerializeField] float _maxDragDistance = 5;
+    [SerializeField] public bool IsActive;
 
-    private Vector2 _startPosition;
+    public Vector2 _startPosition;
     Rigidbody2D _rigidbody2D;
     SpriteRenderer _spriteRenderer;
     GameObject cam1;
@@ -31,13 +32,19 @@ public class Bird : MonoBehaviour
             return;
         }
         Instance = this;
+        _startPosition = _rigidbody2D.position;
+        if (IsActive)
+        { 
+            IsActive = true; 
+        }
+
+
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _startPosition = _rigidbody2D.position;
         _rigidbody2D.isKinematic = true;
         
         //if(Instance==null)
@@ -141,6 +148,15 @@ public class Bird : MonoBehaviour
         {
             LevelControler.Instance._shotsLeft -= 1;
             _collided = true;
+        }
+    }
+    public void Activation(bool activator)
+    {
+        this.gameObject.SetActive(activator);
+        IsActive = activator;
+        if (activator)
+        {
+            cam2.GetComponent<CinemachineVirtualCamera>().m_Follow = this.gameObject.transform;
         }
     }
    

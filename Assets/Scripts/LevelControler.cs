@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelControler : MonoBehaviour
 {
-    private Monster[] _monsters;
-    public int _shotsLeft;
-    private bool _notReseted = true;
     [SerializeField] private string _nextLevelName;
     [SerializeField] public int _shotsToUse;
     [SerializeField] public string _thisLevelName;
     [SerializeField] public string _levelId;
+    [SerializeField] public int _birdChange;
 
+    private Monster[] _monsters;
+    public int _shotsLeft;
+    private bool _notReseted = true;
+    public Vector2 _birdStartPosition;
     public static LevelControler Instance;
 
     // Start is called before the first frame update
@@ -27,6 +29,7 @@ public class LevelControler : MonoBehaviour
 
         Instance = this;
         _shotsLeft = _shotsToUse;
+        _birdStartPosition = Bird.Instance._startPosition;
     }
     private void OnEnable()
     {
@@ -37,13 +40,19 @@ public class LevelControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(MonstersAreAllDead())
+        if (_shotsLeft == _birdChange)
+        {
+            Bird.Instance.Activation(false);
+            BirdGreen.Instance.Activation(true);
+        }
+        if (MonstersAreAllDead())
         {
             GoToNextLevel();
             PlayerPrefs.SetInt("GameSaved", 1);
             PlayerPrefs.SetInt("LevelId", Int32.Parse(_levelId));
             PlayerPrefs.SetString("LevelSaved", _nextLevelName);
             PlayerPrefs.Save();
+
         }      
         
     }
@@ -52,10 +61,11 @@ public class LevelControler : MonoBehaviour
         if(ShotsLeft())
         {
             Bird.Instance.gameObject.SetActive(false);
+            BirdGreen.Instance.Activation(false);
             ResetLevel();
 
         }
-        
+       
         
     }
 
