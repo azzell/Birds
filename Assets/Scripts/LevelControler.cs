@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelControler : MonoBehaviour
 {
+    public enum BirdColors { Red, Green }
     [SerializeField] private string _nextLevelName;
     [SerializeField] public int _shotsToUse;
     [SerializeField] public string _thisLevelName;
     [SerializeField] public string _levelId;
     [SerializeField] public int _birdChange;
-
+    [SerializeField] public BirdColors _startBird;
     private Monster[] _monsters;
     public int _shotsLeft;
     private bool _notReseted = true;
@@ -19,9 +20,9 @@ public class LevelControler : MonoBehaviour
     public static LevelControler Instance;
 
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             GameObject.Destroy(this.gameObject);
             return;
@@ -29,7 +30,29 @@ public class LevelControler : MonoBehaviour
 
         Instance = this;
         _shotsLeft = _shotsToUse;
-        _birdStartPosition = Bird.Instance._startPosition;
+    }
+    private void Start()
+    {
+        //if(Instance != null)
+        //{
+        //    GameObject.Destroy(this.gameObject);
+        //    return;
+        //}
+
+        //Instance = this;
+        //_shotsLeft = _shotsToUse;
+        switch(_startBird)
+        {
+            case BirdColors.Red:
+                _birdStartPosition = Bird.Instance._startPosition;
+                break;
+            case BirdColors.Green:
+                _birdStartPosition = BirdGreen.Instance._startPosition;
+                break;
+            default :
+                Debug.LogError("Nie zdefiniowano ptaka startowego");
+                break;
+        }
     }
     private void OnEnable()
     {

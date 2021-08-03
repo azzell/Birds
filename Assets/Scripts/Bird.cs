@@ -45,12 +45,14 @@ public class Bird : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(LevelControler.Instance._startBird != LevelControler.BirdColors.Red)
+        {
+            _rigidbody2D.position = LevelControler.Instance._birdStartPosition;
+            _startPosition = _rigidbody2D.position;
+        }
         _rigidbody2D.isKinematic = true;
         
-        //if(Instance==null)
-        //{
-        //    Instance = GameObject.FindGameObjectWithTag("DLine");
-        //}
+        
     }
 
     private void OnMouseDown()
@@ -135,6 +137,7 @@ public class Bird : MonoBehaviour
         _rigidbody2D.rotation = 0;
         _rigidbody2D.freezeRotation = true;
         _rigidbody2D.freezeRotation = false;
+        
         cam2.GetComponent<CinemachineVirtualCamera>().Priority = 9;
 
 

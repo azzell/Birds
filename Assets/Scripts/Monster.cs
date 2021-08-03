@@ -39,6 +39,7 @@ public class Monster : MonoBehaviour
         Bird bird = collision.gameObject.GetComponent<Bird>();
         if (bird != null)
             return true;
+        
         if (collision.GetContact(0).normal.y < -0.5)
             return true;
 
@@ -52,5 +53,9 @@ public class Monster : MonoBehaviour
         _hasDied = true;
         yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
+    }
+    public void ExplosionDeath()
+    {
+        StartCoroutine(Die());
     }
 }

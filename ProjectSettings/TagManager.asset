@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - DLine
   - ChoosLevel
+  - Crate
+  - Monster
   layers:
   - Default
   - TransparentFX

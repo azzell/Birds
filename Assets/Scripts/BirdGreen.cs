@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
 using Cinemachine;
+using System.Collections;
+using UnityEngine;
 public class BirdGreen : MonoBehaviour
 {
     [SerializeField] float _lunchForce = 800;
@@ -33,7 +30,7 @@ public class BirdGreen : MonoBehaviour
         }
         Instance = this;
         _startPosition = _rigidbody2D.position;
-        if(!IsActive)
+        if (!IsActive)
         {
             this.gameObject.SetActive(false);
         }
@@ -45,8 +42,11 @@ public class BirdGreen : MonoBehaviour
     void Start()
     {
         // poprawiæ ustawianie pozycji startowej
-        _rigidbody2D.position = LevelControler.Instance._birdStartPosition;
-        _startPosition= _rigidbody2D.position;
+        if (LevelControler.Instance._startBird != LevelControler.BirdColors.Green)
+        {
+            _rigidbody2D.position = LevelControler.Instance._birdStartPosition;
+            _startPosition = _rigidbody2D.position;
+        }
         _rigidbody2D.isKinematic = true;
 
         //if(Instance==null)
@@ -157,7 +157,7 @@ public class BirdGreen : MonoBehaviour
     {
         this.gameObject.SetActive(activator);
         IsActive = activator;
-        if(activator)
+        if (activator)
         {
             cam2.GetComponent<CinemachineVirtualCamera>().m_Follow = this.gameObject.transform;
         }

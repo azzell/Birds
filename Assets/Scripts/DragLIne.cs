@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DragLIne : MonoBehaviour
@@ -17,7 +15,7 @@ public class DragLIne : MonoBehaviour
         {
             _lineRenderer.SetPosition(0, new Vector3(Bird.Instance.transform.position.x, Bird.Instance.transform.position.y, -0.1f));
         }
-        if (BirdGreen.Instance.IsActive)
+        else if (BirdGreen.Instance.IsActive)
         {
             _lineRenderer.SetPosition(0, new Vector3(BirdGreen.Instance.transform.position.x, BirdGreen.Instance.transform.position.y, -0.1f));
 
@@ -27,15 +25,29 @@ public class DragLIne : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Bird.Instance.IsDragging)//_bird.IsDragging
-        { 
-            _lineRenderer.SetPosition(1, Bird.Instance.transform.position);
-            _lineRenderer.enabled = true;
-        }
-        else if (BirdGreen.Instance.IsDragging)
+        if (Bird.Instance != null)
         {
-            _lineRenderer.SetPosition(1, BirdGreen.Instance.transform.position);
-            _lineRenderer.enabled = true;
+            if (Bird.Instance.IsDragging)//_bird.IsDragging
+            {
+                _lineRenderer.SetPosition(1, Bird.Instance.transform.position);
+                _lineRenderer.enabled = true;
+            }
+            else
+            {
+                _lineRenderer.enabled = false;
+            }
+        }
+        else if (Bird.Instance != null)
+        {
+            if (BirdGreen.Instance.IsDragging)
+            {
+                _lineRenderer.SetPosition(1, BirdGreen.Instance.transform.position);
+                _lineRenderer.enabled = true;
+            }
+            else
+            {
+                _lineRenderer.enabled = false;
+            }
         }
         else
         {
